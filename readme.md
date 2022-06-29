@@ -105,7 +105,7 @@ composer require figlabhq/crud-resource-for-backpack
 
 ## Change log
 
-Changes are documented here on Github. Please see the [Releases tab](https://github.com/figlabhq/crud-resource/releases).
+Changes are documented here on Github. Please see the [Releases tab](https://github.com/figlabhq/crud-resource-for-backpack/releases).
 
 ## Contributing
 
@@ -130,10 +130,10 @@ That means in production you'll need a Backpack license code. You can get a free
 (or a paid one for commercial use) on [backpackforlaravel.com](https://backpackforlaravel.com).
 
 
-[ico-version]: https://img.shields.io/packagist/v/figlabhq/crud-resource.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/figlabhq/crud-resource.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/figlabhq/crud-resource-for-backpack.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/figlabhq/crud-resource-for-backpack.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/figlabhq/crud-resource
-[link-downloads]: https://packagist.org/packages/figlabhq/crud-resource
+[link-packagist]: https://packagist.org/packages/figlabhq/crud-resource-for-backpack
+[link-downloads]: https://packagist.org/packages/figlabhq/crud-resource-for-backpack
 [link-author]: https://github.com/figlabhq
 [link-contributors]: ../../contributors
