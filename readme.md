@@ -1,4 +1,4 @@
-# Crud Resource
+# Crud Resource for Backpack
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -103,6 +103,10 @@ composer require figlabhq/crud-resource-for-backpack
     
     ![User Create/Update](https://user-images.githubusercontent.com/171715/176384365-ca5e6d44-d634-43a8-b1ca-9a2b8edcdf80.png)
 
+## Documentation
+
+Coming soon...stay tuned 😅
+
 ## Change log
 
 Changes are documented here on Github. Please see the [Releases tab](https://github.com/figlabhq/crud-resource-for-backpack/releases).
@@ -125,7 +129,7 @@ If you discover any security related issues, please email hello@figlab.io instea
 This project was released under MIT, so you can install it on top of any Backpack & Laravel project. Please see the 
 [license file](license.md) for more information. 
 
-However, please note that you do need Backpack installed, so you need to also abide by its[YUMMY License](https://github.com/Laravel-Backpack/CRUD/blob/master/LICENSE.md). 
+However, please note that you do need Backpack installed, so you need to also abide by its [YUMMY License](https://github.com/Laravel-Backpack/CRUD/blob/master/LICENSE.md). 
 That means in production you'll need a Backpack license code. You can get a free one for non-commercial use 
 (or a paid one for commercial use) on [backpackforlaravel.com](https://backpackforlaravel.com).
 
