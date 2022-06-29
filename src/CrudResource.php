@@ -10,10 +10,10 @@ abstract class CrudResource
     {
     }
 
-    /** @return array<int, \FigLab\Fields\Field> */
+    /** @return array<int, \FigLab\CrudResource\Fields\Field> */
     abstract public function fields(): array;
 
-    /** @return array<int, \FigLab\Filters\Filter> */
+    /** @return array<int, \FigLab\CrudResource\Filters\Filter> */
     public function filters(): array
     {
         return [];
