@@ -1,4 +1,4 @@
-# Crud Resource for Backpack
+# Fluent Interface for Laravel Backpack
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -7,6 +7,13 @@
 This package allows creating CRUD panels for [Backpack for Laravel](https://backpackforlaravel.com/) administration panel using fluent field definitions.
 
 This is heavily inspired by [Laravel Nova](https://nova.laravel.com/).
+
+### What does it offer?
+- Define Resources once, get all configurations ready for CRUD panels
+- Get IDE hints - these are all PHP classes :wink:
+- Avoid looong, nested, boring arrays
+- Embrace eligance of Object-Oriented API with [Fluent Interface Pattern](https://en.wikipedia.org/wiki/Fluent_interface) 
+
 
 ## Installation
 
