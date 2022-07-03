@@ -12,7 +12,7 @@ This is heavily inspired by [Laravel Nova](https://nova.laravel.com/).
 - Define Resources once, get all configurations ready for CRUD panels
 - Get IDE hints - these are all PHP classes :wink:
 - Avoid looong, nested, boring arrays
-- Embrace eligance of Object-Oriented API with [Fluent Interface Pattern](https://en.wikipedia.org/wiki/Fluent_interface) 
+- Embrace the eligance of Object-Oriented API with [Fluent Interface Pattern](https://en.wikipedia.org/wiki/Fluent_interface) 
 
 
 ## Installation
