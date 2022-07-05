@@ -19,6 +19,18 @@ abstract class CrudResource
         return [];
     }
 
+    /** @return array<string, string | array<int, string>> */
+    public function validationRules(): array
+    {
+        return [];
+    }
+
+    /** @return array<string, string> */
+    public function validationMessages(): array
+    {
+        return [];
+    }
+
     public function buildList(): void
     {
         foreach ($this->fields() as $field) {
@@ -49,6 +61,13 @@ abstract class CrudResource
                 $this->crud->addField($field->fieldDefinition());
             }
         }
+
+        if (count($this->validationRules()) > 0) {
+            $this->crud->setValidation(
+                $this->validationRules(),
+                $this->validationMessages()
+            );
+        }
     }
 
     public function buildUpdateForm(): void
@@ -60,6 +79,13 @@ abstract class CrudResource
             if ($field->isShownOnUpdate()) {
                 $this->crud->addField($field->fieldDefinition());
             }
+        }
+
+        if (count($this->validationRules()) > 0) {
+            $this->crud->setValidation(
+                $this->validationRules(),
+                $this->validationMessages()
+            );
         }
     }
 }
