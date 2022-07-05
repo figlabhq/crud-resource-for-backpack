@@ -22,6 +22,9 @@ abstract class CrudResource
     public function buildList(): void
     {
         foreach ($this->fields() as $field) {
+            $field->setRequest($this->crud->getRequest())
+                ->setOperation($this->crud->getCurrentOperation());
+
             if ($field->isShownOnIndex()) {
                 $this->crud->addColumn($field->columnDefinition());
             }
@@ -39,6 +42,9 @@ abstract class CrudResource
     public function buildCreateForm(): void
     {
         foreach ($this->fields() as $field) {
+            $field->setRequest($this->crud->getRequest())
+                ->setOperation($this->crud->getCurrentOperation());
+
             if ($field->isShownOnCreation()) {
                 $this->crud->addField($field->fieldDefinition());
             }
@@ -48,6 +54,9 @@ abstract class CrudResource
     public function buildUpdateForm(): void
     {
         foreach ($this->fields() as $field) {
+            $field->setRequest($this->crud->getRequest())
+                ->setOperation($this->crud->getCurrentOperation());
+
             if ($field->isShownOnUpdate()) {
                 $this->crud->addField($field->fieldDefinition());
             }
