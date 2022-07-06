@@ -113,7 +113,7 @@ composer require figlabhq/crud-resource-for-backpack
 
 ## Documentation
 
-Coming soon...stay tuned 😅
+Please see the [documentation](docs/readme.md) section for further details of the functionality.
 
 ## Change log
 
