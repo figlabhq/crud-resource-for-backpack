@@ -2,10 +2,14 @@
 
 namespace FigLab\CrudResource\Fields;
 
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 abstract class Field
 {
+    private const CREATE_OPERATION = 'create';
+
     /**
      * The displayable name of the field.
      */
@@ -97,9 +101,34 @@ abstract class Field
     protected \Closure $displayCallback;
 
     /**
+     * The validation rules for create and update forms.
+     */
+    protected array $rules = [];
+
+    /**
+     * The validation rules for create form.
+     */
+    protected array $creationRules = [];
+
+    /**
+     * The validation rules for update form.
+     */
+    protected array $updateRules = [];
+
+    /**
      * The definition of the field to return.
      */
     protected array $props = [];
+
+    /**
+     * Request object from CrudPanel.
+     */
+    protected Request $request;
+
+    /**
+     * CRUD operation of the request (Ex: create / update / revision / delete)
+     */
+    protected string $operation;
 
     /**
      * Private constructor to avoid direct instance creation
@@ -116,6 +145,26 @@ abstract class Field
     public static function make(...$arguments): static
     {
         return new static(...$arguments);
+    }
+
+    /**
+     * Pass the Request from CrudPanel to the field.
+     */
+    public function setRequest(Request $request): self
+    {
+        $this->request = $request;
+
+        return $this;
+    }
+
+    /**
+     * Pass the operation name from CrudPanel to the field.
+     */
+    public function setOperation(string $operation): self
+    {
+        $this->operation = $operation;
+
+        return $this;
     }
 
     /**
@@ -393,6 +442,52 @@ abstract class Field
     }
 
     /**
+     * Set the validation rules for the field.
+     */
+    public function rules(string | array | Rule $rules): self
+    {
+        $this->rules = $rules instanceof Rule || is_string($rules) ? func_get_args() : $rules;
+
+        return $this;
+    }
+
+    /**
+     * Set the validation rules for the field.
+     */
+    public function creationRules(string | array | Rule $rules): self
+    {
+        $this->creationRules = $rules instanceof Rule || is_string($rules) ? func_get_args() : $rules;
+
+        return $this;
+    }
+
+    /**
+     * Determine the validation rules for the field in the time of creation.
+     */
+    protected function getCreationRules(): array
+    {
+        return array_merge_recursive($this->rules, $this->creationRules);
+    }
+
+    /**
+     * Set the validation rules for the field.
+     */
+    public function updateRules(string | array | Rule $rules): self
+    {
+        $this->updateRules = $rules instanceof Rule || is_string($rules) ? func_get_args() : $rules;
+
+        return $this;
+    }
+
+    /**
+     * Determine the validation rules for the field in the time of update.
+     */
+    protected function getUpdateRules(): array
+    {
+        return array_merge_recursive($this->rules, $this->updateRules);
+    }
+
+    /**
      * Return the Backpack column definition, after merging with existing properties from inherited field.
      */
     public function columnDefinition(): array
@@ -414,13 +509,12 @@ abstract class Field
         return array_merge($props, $this->props);
     }
 
-
     public function buildSubFields(): array
     {
         $subFields = [];
         foreach ($this->props['subfields'] ?? [] as $field) {
             if ($field->isShownOnCreation()) {
-                $subFields[] =  $field->fieldDefinition();
+                $subFields[] = $field->fieldDefinition();
             }
         }
 
@@ -443,6 +537,14 @@ abstract class Field
                 'placeholder' => $this->placeholder
             ],
         ];
+
+        $validationRules = $this->operation === self::CREATE_OPERATION
+            ? $this->getCreationRules()
+            : $this->getUpdateRules();
+
+        if (count($validationRules) > 0) {
+            $props['validationRules'] = $validationRules;
+        }
 
         if (isset($this->props['subfields'])) {
             $this->props['subfields'] = $this->buildSubFields();
