@@ -129,6 +129,16 @@ abstract class Field
     }
 
     /**
+     * Set custom attributes for the field.
+     */
+    public function attributes(array $attributes = []): self
+    {
+        $this->props['attributes'] = array_merge($this->props['attributes'], $attributes);
+
+        return $this;
+    }
+
+    /**
      * The grid size to display the field in.
      */
     public function size(int $gridSize): self
