@@ -34,16 +34,16 @@ final class HasMany extends Field
         return $this;
     }
 
-    public function tab(string $tab = 'General'): self
+    public function ajax(bool $value = true): self
     {
-        $this->props['tab'] = $tab;
+        $this->props['ajax'] = $value;
 
         return $this;
     }
 
-    public function wrapperClass(string $class): self
+    public function inlineCreate(bool | array $value = true): self
     {
-        $this->props['wrapper']['class'] = $class;
+        $this->props['inline_create'] = $value;
 
         return $this;
     }
