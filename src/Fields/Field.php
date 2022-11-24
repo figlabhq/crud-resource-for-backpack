@@ -84,7 +84,7 @@ abstract class Field
     /**
      * Indicates if the element should be shown on the creation view.
      */
-    protected bool $showOnCreation = true;
+    protected bool $showOnCreate = true;
 
     /**
      * Indicates if the element should be shown on the update view.
@@ -263,7 +263,7 @@ abstract class Field
      */
     public function hideWhenCreating(bool $value = true): self
     {
-        $this->showOnCreation = $value;
+        $this->showOnCreate = $value;
 
         return $this;
     }
@@ -303,7 +303,7 @@ abstract class Field
      */
     public function showOnCreating(bool $callback = true): self
     {
-        $this->showOnCreation = $callback;
+        $this->showOnCreate = $callback;
 
         return $this;
     }
@@ -345,9 +345,9 @@ abstract class Field
     /**
      * Check for showing when creating.
      */
-    public function isShownOnCreation(): bool
+    public function isShownOnCreate(): bool
     {
-        return $this->showOnCreation;
+        return $this->showOnCreate;
     }
 
     /**
@@ -357,7 +357,7 @@ abstract class Field
     {
         $this->showOnIndex = true;
         $this->showOnDetail = false;
-        $this->showOnCreation = false;
+        $this->showOnCreate = false;
         $this->showOnUpdate = false;
 
         return $this;
@@ -370,7 +370,7 @@ abstract class Field
     {
         $this->showOnIndex = false;
         $this->showOnDetail = true;
-        $this->showOnCreation = false;
+        $this->showOnCreate = false;
         $this->showOnUpdate = false;
 
         return $this;
@@ -383,7 +383,7 @@ abstract class Field
     {
         $this->showOnIndex = false;
         $this->showOnDetail = false;
-        $this->showOnCreation = true;
+        $this->showOnCreate = true;
         $this->showOnUpdate = true;
 
         return $this;
@@ -396,7 +396,7 @@ abstract class Field
     {
         $this->showOnIndex = true;
         $this->showOnDetail = true;
-        $this->showOnCreation = false;
+        $this->showOnCreate = false;
         $this->showOnUpdate = false;
 
         return $this;
@@ -428,8 +428,10 @@ abstract class Field
     public function buildSubFields(): array
     {
         $subFields = [];
+
+        /** @var self $field */
         foreach ($this->props['subfields'] ?? [] as $field) {
-            if ($field->isShownOnCreation()) {
+            if ($field->isShownOnCreate() || $field->isShownOnUpdate()) {
                 $subFields[] =  $field->fieldDefinition();
             }
         }

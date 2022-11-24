@@ -8,6 +8,6 @@ final class Column extends Field
 
     protected bool $showOnIndex = true;
     protected bool $showOnDetail = false;
-    protected bool $showOnCreation = false;
+    protected bool $showOnCreate = false;
     protected bool $showOnUpdate = false;
 }

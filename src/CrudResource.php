@@ -39,7 +39,7 @@ abstract class CrudResource
     public function buildCreateForm(): void
     {
         foreach ($this->fields() as $field) {
-            if ($field->isShownOnCreation()) {
+            if ($field->isShownOnCreate()) {
                 $this->crud->addField($field->fieldDefinition());
             }
         }
