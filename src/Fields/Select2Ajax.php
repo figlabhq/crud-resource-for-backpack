@@ -49,4 +49,18 @@ final class Select2Ajax extends Field
 
         return $this;
     }
+
+    public function dependencies(array $dependencies): self
+    {
+        $this->props['dependencies'] = $dependencies;
+
+        return $this;
+    }
+
+    public function includeAllFormFields(bool $bool): self
+    {
+        $this->props['include_all_form_fields'] = $bool;
+
+        return $this;
+    }
 }
