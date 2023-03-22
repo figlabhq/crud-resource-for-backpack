@@ -18,7 +18,7 @@
         "CrudResource"
     ],
     "require": {
-        "illuminate/support": "^7|^8|^9",
+        "illuminate/support": "^7|^8|^9|^10",
         "backpack/crud": "^5.0"
     },
     "require-dev": {
