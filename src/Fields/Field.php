@@ -121,7 +121,7 @@ abstract class Field
     /**
      * Default value for the field.
      */
-    public function default(string | bool | int $value): self
+    public function default(string | bool | int | null $value): self
     {
         $this->default = $value;
 
