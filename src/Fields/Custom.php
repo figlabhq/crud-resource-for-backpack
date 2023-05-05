@@ -19,7 +19,7 @@ final class Custom extends Field
      */
     public function options(array $options = []): self
     {
-        $this->props = array_merge($this->props, $options);
+        $this->props['options'] = $options;
 
         return $this;
     }
