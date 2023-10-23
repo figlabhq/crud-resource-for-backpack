@@ -48,4 +48,32 @@ final class BelongsTo extends Field
             'type' => 'select',
         ]);
     }
+
+    public function selectGrouped(): self
+    {
+        $this->type = 'select_grouped';
+
+        return $this;
+    }
+
+    public function groupBy(string $groupBy): self
+    {
+        $this->props['group_by'] = $groupBy;
+
+        return $this;
+    }
+
+    public function groupByAttribute(string $groupByAttribute): self
+    {
+        $this->props['group_by_attribute'] = $groupByAttribute;
+
+        return $this;
+    }
+
+    public function groupByRelationshipBack(string $relationship): self
+    {
+        $this->props['group_by_relationship_back'] = $relationship;
+
+        return $this;
+    }
 }
